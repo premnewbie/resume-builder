@@ -1,38 +1,40 @@
+[data-theme="light"] {
+  --background-color: white;
+  --text-color: black;
+}
+
+[data-theme="dark"] {
+  --background-color: black;
+  --text-color: white;
+}
+
 .App {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  width: 100vw;
+  height: 100vh;
+}
+
+.resume-info{
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.layout-1 {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--text-color);
+}
+
+.layout-1 h2{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.layout-1 .personalInfo  div{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex: 1;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  gap: 2rem;
+  margin: auto;
 }
