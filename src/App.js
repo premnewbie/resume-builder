@@ -1,13 +1,21 @@
 import { createContext, useState } from "react";
 import "./App.css";
 import ResumeInfo from "./pages/ResumeInfo";
-import Layout1 from "./components/Layout1";
+import PrintResume from "./components/PrintResume";
 
 export const Context = createContext();
 
 function App() {
-  const [theme, setTheme] = useState("dark");
-  const [infosFilled,setInfosFilled] = useState([false,false,false,false,false])
+  const [theme, setTheme] = useState("light");
+  const [layout, setLayout] = useState(1);
+  const [infosFilled, setInfosFilled] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+
 
   const [personalInfo, setPersonalInfo] = useState({
     name: "",
@@ -26,57 +34,81 @@ function App() {
   const [projects, setProjects] = useState([]);
 
   const userData = {
-    "personalInfo": personalInfo,
-    "academicInfo": academicInfo,
-    "previousEmployment": previousEmpInfo,
-    "skills": skills,
-    "projects": projects,
+    personalInfo: personalInfo,
+    academicInfo: academicInfo,
+    previousEmployment: previousEmpInfo,
+    skills: skills,
+    projects: projects,
   };
 
-  const updateData = (infoType,data) => {
+  const updateData = (infoType, data) => {
     var ans = infosFilled;
-    switch (infoType){
-      case "personalInfo": 
-        setPersonalInfo(data);        
+    switch (infoType) {
+      case "personalInfo":
+        setPersonalInfo(data);
         ans[0] = true;
-        setInfosFilled(ans)
+        setInfosFilled(ans);
         break;
       case "academicInfo":
-        setAcademicInfo(prev => [...prev,data]);
+        setAcademicInfo((prev) => [...prev, data]);
         ans[1] = true;
-        setInfosFilled(ans)
+        setInfosFilled(ans);
         break;
-      case "employmentInfo": 
-        setPreviousEmpInfo(prev => [...prev,data]);
+      case "employmentInfo":
+        setPreviousEmpInfo((prev) => [...prev, data]);
         ans[2] = true;
-        setInfosFilled(ans)
+        setInfosFilled(ans);
         break;
       case "skills":
-        setSkills(prev => [...prev,data]);
+        setSkills((prev) => [...prev, data]);
         ans[3] = true;
-        setInfosFilled(ans)
+        setInfosFilled(ans);
         break;
       case "projects":
-        setProjects(prev => [...prev,data]);
+        setProjects((prev) => [...prev, data]);
         ans[4] = true;
-        setInfosFilled(ans)
+        setInfosFilled(ans);
         break;
-      default: ;
+      default:
     }
-  }
+  };
 
   const handleTheme = () => {
-    setTheme(theme==='light'?'dark':'light');
-  }
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
+  const handleLayout = () => {
+    if(layout===1){
+      setLayout(2);
+    }else{
+      setLayout(1)
+    }
+  };
 
   return (
     <Context.Provider
-      value={{ personalInfo, academicInfo, previousEmpInfo, skills, projects,userData,updateData,infosFilled }}
+      value={{
+        personalInfo,
+        academicInfo,
+        previousEmpInfo,
+        skills,
+        projects,
+        userData,
+        updateData,
+        infosFilled,
+        layout
+      }}
     >
       <div className="App" data-theme={theme}>
-        <button onClick={handleTheme}>{theme} mode</button>
-        <ResumeInfo />
-        <Layout1 />
+        
+          <div style={{ display: "flex", gap: "1rem" }}>
+            <button onClick={handleTheme}>{theme==='dark'?'light':'dark'} mode</button>
+            {infosFilled[4] && <button onClick={() => handleLayout()}>Change Layout</button>}
+          </div>
+        {!infosFilled[4] && <ResumeInfo />}
+        <div className="theme-changer" data-theme={theme}>          
+        {infosFilled[4] && <PrintResume />}
+        </div>
       </div>
     </Context.Provider>
   );

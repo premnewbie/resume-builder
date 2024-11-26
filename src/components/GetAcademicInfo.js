@@ -19,40 +19,42 @@ const GetAcademicInfo = () => {
   };
 
   return (
-    <section>
+    <section className="academic-info input-container">
       <h3>Academic Info: </h3>
       <div>
-        <label>Institution: </label>
-        <input
-          type="text"
-          value={info.institution}
-          required
-          onInput={(e) =>
-            setInfo((prev) => ({ ...prev, institution: e.target.value }))
-          }
-        />
-      </div>
-      <div>
-        <label>Degree: </label>
-        <input
-          type="text"
-          value={info.degree}
-          required
-          onInput={(e) =>
-            setInfo((prev) => ({ ...prev, degree: e.target.value }))
-          }
-        />
-      </div>
-      <div>
-        <label>Year Of Passing: </label>
-        <input
-          type="number"
-          value={info.yearOfPassing}
-          required
-          onInput={(e) =>
-            setInfo((prev) => ({ ...prev, yearOfPassing: e.target.value }))
-          }
-        />
+        <div>
+          <label>Institution: </label>
+          <input
+            type="text"
+            value={info.institution}
+            required
+            onInput={(e) =>
+              setInfo((prev) => ({ ...prev, institution: e.target.value }))
+            }
+          />
+        </div>
+        <div>
+          <label>Degree: </label>
+          <input
+            type="text"
+            value={info.degree}
+            required
+            onInput={(e) =>
+              setInfo((prev) => ({ ...prev, degree: e.target.value }))
+            }
+          />
+        </div>
+        <div>
+          <label>Year Of Passing: </label>
+          <input
+            type="number"
+            value={info.yearOfPassing}
+            required
+            onInput={(e) =>
+              setInfo((prev) => ({ ...prev, yearOfPassing: e.target.value }))
+            }
+          />
+        </div>
       </div>
       <button onClick={handleAcademicData}>Add academic details</button>
     </section>

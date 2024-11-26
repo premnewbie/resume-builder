@@ -13,9 +13,9 @@ const ResumeInfo = () => {
     <div className="resume-info">
       {!arr[0] && <GetPersonalInfo />}
       {arr[0] && !arr[1] && <GetAcademicInfo />}
-      {arr[0] && arr[1] && !arr[2] && <GetEmploymentInfo />}
-      {arr[0] && arr[1] && arr[2] && !arr[3] && <GetSkills />}
-      {arr[0] && arr[1] && arr[2] && arr[3] && !arr[4] && <GetProjects />}
+      {arr[1] && !arr[2] && <GetEmploymentInfo />}
+      {arr[2] && !arr[3] && <GetSkills />}
+      {arr[3] && !arr[4] && <GetProjects />}
     </div>
   );
 };

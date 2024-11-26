@@ -9,10 +9,10 @@
 }
 
 .App {
-  background-color: var(--background-color);
-  color: var(--text-color);
   width: 100vw;
   height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .resume-info{
@@ -20,17 +20,40 @@
   padding: 1rem;
 }
 
-.layout-1 {
-  margin: 1rem;
+.input-container div{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.input-container div div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-container div input{
+  width: 70%;
+  height: 2rem;
+}
+
+.input-container button{
   padding: 1rem;
+}
+
+.layout-1, .layout-2{
+  margin: auto;
+  padding: 1rem;
+  width: 90%;
   border: 1px solid var(--text-color);
 }
 
-.layout-1 h2{
+.layout-1 h2,.layout-2 h2{
   text-align: center;
 }
 
-.layout-1 .personalInfo  div{
+.layout-1 .personalInfo  div, .layout-2 .personalInfo  div{
   display: flex;
   flex: 1;
   flex-wrap: wrap;
