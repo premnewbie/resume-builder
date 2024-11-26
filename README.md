@@ -1,3 +1,5 @@
+# Getting Started with Create React App
+
 Application starts with App.js file Where all the states which will be used by the entire applictaion in stored.
 
 The context api is used to to transfer data to all the components which needs access to the states.
