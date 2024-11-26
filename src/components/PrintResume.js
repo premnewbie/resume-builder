@@ -1,4 +1,4 @@
-import React, { useRef,useCallback, useContext } from "react";
+import React, { useRef, useCallback, useContext } from "react";
 import { useReactToPrint } from "react-to-print";
 import Layout1 from "./Layout1";
 import Layout2 from "./Layout2";
@@ -18,15 +18,27 @@ const PrintResume = () => {
     documentTitle: "Resume",
   });
 
-  
-  console.log(context.layout)
+  console.log(context.layout);
 
   return (
-    <div>
-      <button onClick={() => handlePrint(reactToPrintContent)}>Print Resume</button>
-      <div ref={componentRef}>
-        {layout===1?(<Layout1 />):(<Layout2 />)}
+    <div style={{ margin: "2rem 0" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "right",
+          marginBottom: "2rem",
+          padding: "1rem",
+          fontWeight: "bold",
+        }}
+      >
+        <button
+          style={{ padding: "1rem", fontWeight: "bold" }}
+          onClick={() => handlePrint(reactToPrintContent)}
+        >
+          Print Resume
+        </button>
       </div>
+      <div ref={componentRef}>{layout === 1 ? <Layout1 /> : <Layout2 />}</div>
     </div>
   );
 };

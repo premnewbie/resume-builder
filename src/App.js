@@ -16,7 +16,6 @@ function App() {
     false,
   ]);
 
-
   const [personalInfo, setPersonalInfo] = useState({
     name: "",
     email: "",
@@ -78,10 +77,10 @@ function App() {
   };
 
   const handleLayout = () => {
-    if(layout===1){
+    if (layout === 1) {
       setLayout(2);
-    }else{
-      setLayout(1)
+    } else {
+      setLayout(1);
     }
   };
 
@@ -96,18 +95,35 @@ function App() {
         userData,
         updateData,
         infosFilled,
-        layout
+        layout,
       }}
     >
       <div className="App" data-theme={theme}>
-        
-          <div style={{ display: "flex", gap: "1rem" }}>
-            <button onClick={handleTheme}>{theme==='dark'?'light':'dark'} mode</button>
-            {infosFilled[4] && <button onClick={() => handleLayout()}>Change Layout</button>}
-          </div>
+        <div
+          style={{
+            display: "flex",
+            gap: "1rem",
+            justifyContent: "flex-end",
+          }}
+        >
+          <button
+            style={{ padding: "1rem", fontWeight: "bold" }}
+            onClick={handleTheme}
+          >
+            {theme === "dark" ? "Light" : "Dark"} mode
+          </button>
+          {infosFilled[4] && (
+            <button
+              style={{ padding: "1rem", fontWeight: "bold" }}
+              onClick={() => handleLayout()}
+            >
+              Change Layout
+            </button>
+          )}
+        </div>
         {!infosFilled[4] && <ResumeInfo />}
-        <div className="theme-changer" data-theme={theme}>          
-        {infosFilled[4] && <PrintResume />}
+        <div className="theme-changer" data-theme={theme}>
+          {infosFilled[4] && <PrintResume />}
         </div>
       </div>
     </Context.Provider>
